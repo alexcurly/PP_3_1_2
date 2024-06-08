@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+    <style>
+
+        #add-user-button {
+            margin-top: 10px;
+            display: block;
+            width: 130px;
+            height: 30px;
+            font-size: 15px;
+            background-color: #246500;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            margin-left: 0;
+            margin-right: auto;
+        }
+
+        table {
+            border: 1px solid #000000;
+            border-collapse: collapse;
+            width: 70%;
+        }
+
+        th, td {
+            border: 1px solid #000000;
+            padding: 5px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #423d3d;
+            color: #fff;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        a {
+            color: #423d3d;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #f00;
+        }
+
+
+    </style>
+</head>
+<body>
+
+<form action="adduser" target="_blank">
+    <button id="add-user-button">Add new user</button>
+</form>
+
+<table border="1" cellpadding="5">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>LastName</th>
+        <th>Age</th>
+        <th colspan="2" style="background-color:#2a2a2a;">Function</th>
+    </tr>
+    </thead>
+    <tr th:each="user : ${users}">
+        <td th:utext="${user.getId()}">ID</td>
+        <td th:utext="${user.getName()}">Name</td>
+        <td th:utext="${user.getLastName()}">LastName</td>
+        <td th:utext="${user.getAge()}">Age</td>
+        </td>
+        <td rowspan="1" style="background-color:#baf6b8;"><a th:href="'/updateuser?id='+${user.id}">Update</a>
+        <td rowspan="1" style="background-color:#fa6969;"><a th:href="'/deleteUser?id='+${user.id}">Delete</a></td>
+    </tr>
+</table>
+
+
+</body>
+</html>
